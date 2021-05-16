@@ -10,19 +10,10 @@ body{
     grid-template-columns: repeat(4, auto);
 }
 
-#display{
-    width: 150px;
-    height: 50px;
-    border: 1px solid grey;
-    border-radius: 10px;
-    position: relative;
-}
-
-#displayitems{
-    position: absolute;
-    top: 0px;
-    right: 0px;
+#displayvalue{
     font-size: 30px;
+    text-align: right;
+    width: 300px;
 }
 
 .btn{
