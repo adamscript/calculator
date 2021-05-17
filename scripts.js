@@ -1,6 +1,6 @@
 let displayValue = "";
 let operands = "";
-let operator = "";
+let operator = "+";
 let firstOperand = 0;
 let secondOperand = 0;
 let result = 0;
@@ -79,6 +79,7 @@ function operatorKeys(){
     for(let i = 0; i < operatorbuttons.length; i++){
         operatorbuttons[i].addEventListener('click', () => {
             operatorIsPressed = true;
+            firstOperand = result;
             operands = '0';
             //getOperand();
             operator = operatorbuttons[i].textContent;
@@ -129,15 +130,14 @@ function getOperand(){
             secondOperand = parseInt(operands);
         }
         else{
-            firstOperand = result;
             secondOperand = parseInt(operands);
         }
     }
-    else{
+    /*else{
         firstOperand = result;
         secondOperand = parseInt(operands);
         equalIsPressed = false;
-    }
+    }*/
     //operands = "";
 }
 
