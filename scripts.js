@@ -93,7 +93,7 @@ function equalsKey(){
             firstOperand = result;
             operands = result;
             equalIsPressed = true;
-            displayResult();
+            hideResult();
 
             displayValue = result;
             const display = document.getElementById("displayvalue")
@@ -117,7 +117,7 @@ function clearKey(){
             
             const display = document.getElementById("displayvalue")
             const displayresult = document.getElementById("displayresultvalue")
-            display.value = 0
+            display.value = ""
             displayresult.value = ""})
     }
 }
@@ -174,10 +174,16 @@ function getResult(){
 
 function displayResult(){
     const display = document.getElementById("displayresultvalue")
-    console.log(firstOperand)
+    /*console.log(firstOperand)
     console.log(secondOperand)
-    console.log("result : " + result);
+    console.log("result : " + result);*/
+    
     display.value = result;
+}
+
+function hideResult(){
+    const display = document.getElementById("displayresultvalue")
+    display.value = "";
 }
 
 buttonKeys();
@@ -186,3 +192,15 @@ operatorKeys();
 equalsKey();
 clearKey();
 backspaceKey();
+
+let buttons = document.querySelectorAll("button");
+for(let i = 0; i < buttons.length; i++){
+    console.log(buttons[i])
+}
+
+let keyone = document.getElementById("btn_1");
+document.addEventListener('keydown', () => {
+    if(event.key == 4){
+        keyone.click();
+    }
+})
