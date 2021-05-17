@@ -98,6 +98,10 @@ function equalsKey(){
             operands = "";
             equalIsPressed = true;
             displayResult();
+
+            displayValue = result;
+            const display = document.getElementById("displayvalue")
+            display.value = displayValue
         })
     }
 }
@@ -109,6 +113,7 @@ function clearKey(){
             firstOperand = 0;
             secondOperand = 0;
             operands = "";
+            operator = "+";
             displayValue = "";
             result = 0;
             operatorIsPressed = false;
@@ -126,18 +131,14 @@ function getOperand(){
         if(!operatorIsPressed){
             firstOperand = parseInt(operands);
         }
-        else if(operatorIsPressed && secondOperand == 0){
-            secondOperand = parseInt(operands);
-        }
         else{
             secondOperand = parseInt(operands);
         }
     }
-    /*else{
-        firstOperand = result;
+    else{
         secondOperand = parseInt(operands);
         equalIsPressed = false;
-    }*/
+    }
     //operands = "";
 }
 
