@@ -2,22 +2,55 @@ body{
     display: flex;
     align-items: center;
     flex-direction: column;
+    background-color: #181818;
+}
+
+#header{
+    float: left;
+    color: lightgrey;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    
+}
+
+#header a:link{
+    color: white;
+    text-decoration: none;
+}
+
+#header a:visited{
+    color: white;
+    text-decoration: none;
 }
 
 #buttons{
     display: grid;
-    grid-template-rows: repeat(4, auto);
-    grid-template-columns: repeat(4, auto);
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    width: 300px;
+    height: 300px;
 }
 
 input{
-    font-size: 30px;
+    font-size: 150px;
     text-align: right;
-    width: 300px;
+    width: 100%;
+    background-color: #181818;
+    color: lightgrey;
+    border: 0px;
+}
+
+#displayresultvalue{
+    font-size: 100px;
 }
 
 button{
-    width: 50px;
-    height: 50px;
-    font-size: 20px;
+    font-size: 30px;
+    background-color: #202020;
+    border: 0px;
+    color: lightgrey;
+}
+
+#backspace_icon{
+    filter: invert(100%);
 }

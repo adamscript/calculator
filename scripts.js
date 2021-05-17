@@ -60,15 +60,10 @@ function operandKeys(){
     for(let i = 0; i < operandbuttons.length; i++){
         operandbuttons[i].addEventListener('click', () => {
             operands += operandbuttons[i].textContent;
+            console.log("operands : "+ operands);   
             getOperand();
-            /*if(!operatorIsPressed){
-                firstOperand = parseInt(operands);
-            }
-            else{
-                secondOperand = parseInt(operands);
-            }*/
-            
             getResult();
+            disablePeriod();
             displayResult();
         })
     }
@@ -79,6 +74,7 @@ function operatorKeys(){
     for(let i = 0; i < operatorbuttons.length; i++){
         operatorbuttons[i].addEventListener('click', () => {
             operatorIsPressed = true;
+            equalIsPressed = false;
             firstOperand = result;
             operands = '0';
             //getOperand();
@@ -92,10 +88,10 @@ function equalsKey(){
     let equalsbutton = document.getElementsByClassName("equal");
     for(let i = 0; i < equalsbutton.length; i++){
         equalsbutton[i].addEventListener('click', () => {
-            secondOperand = parseInt(operands);
+            secondOperand = parseFloat(operands);
             getResult();
             firstOperand = result;
-            operands = "";
+            operands = result;
             equalIsPressed = true;
             displayResult();
 
@@ -126,18 +122,47 @@ function clearKey(){
     }
 }
 
+function backspaceKey(){
+    let backspacebutton = document.getElementById("backspace");
+    backspacebutton.addEventListener('click', () => {
+        operands = operands.slice(0, -1);
+        displayValue = displayValue.slice(0, -1);
+
+        getOperand();
+        getResult();
+        disablePeriod();
+        displayResult();
+
+        const display = document.getElementById("displayvalue");
+        display.value = displayValue;
+        console.log("operands" + operands)
+    })
+}
+
+function disablePeriod(){
+    let periodbutton = document.getElementById("btn_period");
+    if(operands.includes(".")){
+        periodbutton.disabled = true;
+    }
+    else{
+        periodbutton.disabled = false;
+    }
+    
+}
+
 function getOperand(){
     if(!equalIsPressed){
         if(!operatorIsPressed){
-            firstOperand = parseInt(operands);
+            firstOperand = parseFloat(operands);
         }
         else{
-            secondOperand = parseInt(operands);
+            secondOperand = parseFloat(operands);
         }
     }
     else{
-        secondOperand = parseInt(operands);
-        equalIsPressed = false;
+        firstOperand = parseFloat(operands);
+        secondOperand = 0;
+        operator = "+"
     }
     //operands = "";
 }
@@ -160,3 +185,4 @@ operandKeys();
 operatorKeys();
 equalsKey();
 clearKey();
+backspaceKey();
