@@ -1,52 +1,57 @@
 let displayValue = "";
-let displayResult;
 let operands = "";
 let operator = "";
 let firstOperand = 0;
 let secondOperand = 0;
 let result = 0;
+let operatorIsPressed = false;
+let equalIsPressed = false;
 
-function add(firstOperand, secondOperand){
-    return firstOperand + secondOperand;
+function add(operand1, operand2){
+    return operand1 + operand2;
 }
 
-function subtract(firstOperand, secondOperand){
-    return firstOperand - secondOperand;
+function subtract(operand1, operand2){
+    return operand1 - operand2;
 }
 
-function multiply(firstOperand, secondOperand){
-    return (firstOperand * secondOperand);
+function multiply(operand1, operand2){
+    return (operand1 * operand2);
 }
 
-function divide(firstOperand, secondOperand){
-    return (firstOperand / secondOperand);
+function divide(operand1, operand2){
+    return (operand1 / operand2);
 }
 
-function operate(firstOperand, operator, secondOperand){
+function operate(operand1, operator, operand2){
     switch(operator){
         case "+":
-            return add(firstOperand, secondOperand);
+            return add(operand1, operand2);
         case "-":
-            return subtract(firstOperand, secondOperand);
+            return subtract(operand1, operand2);
         case "*":
         case "x":
         case "X":
         case "×":
-            return multiply(firstOperand, secondOperand);
+            return multiply(operand1, operand2);
         case "/":
         case "÷":
-            return divide(firstOperand, secondOperand);
+            return divide(operand1, operand2);
     }
 }
 
 function buttonKeys(){
     let buttons = document.getElementById("buttons").childNodes;
     for(let i = 0; i < buttons.length; i++){
-        buttons[i].addEventListener('click', () => {
-            displayValue += buttons[i].textContent;
-
-            const display = document.getElementById("displayvalue")
-            display.value = displayValue})
+        if (buttons[i].textContent != "="){
+            buttons[i].addEventListener('click', () => {
+                displayValue += buttons[i].textContent;
+                const display = document.getElementById("displayvalue")
+                display.value = displayValue})
+        }
+        else{
+            continue;
+        }
     }
 }
 
@@ -55,7 +60,16 @@ function operandKeys(){
     for(let i = 0; i < operandbuttons.length; i++){
         operandbuttons[i].addEventListener('click', () => {
             operands += operandbuttons[i].textContent;
-            console.log("result : ");
+            getOperand();
+            /*if(!operatorIsPressed){
+                firstOperand = parseInt(operands);
+            }
+            else{
+                secondOperand = parseInt(operands);
+            }*/
+            
+            getResult();
+            displayResult();
         })
     }
 }
@@ -64,18 +78,11 @@ function operatorKeys(){
     let operatorbuttons = document.getElementsByClassName("operator");
     for(let i = 0; i < operatorbuttons.length; i++){
         operatorbuttons[i].addEventListener('click', () => {
-        if(secondOperand == 0){
-            firstOperand = parseInt(operands);
-        }
-        else{
-            firstOperand = getResult();
-            secondOperand = parseInt(operands);
-        }
-        operands = "";
-        operator = operatorbuttons[i].textContent;
-        console.log("first operands : " + firstOperand)
-        console.log("second operands : " + secondOperand)
-        console.log("result : " + getResult());
+            operatorIsPressed = true;
+            operands = '0';
+            //getOperand();
+            operator = operatorbuttons[i].textContent;
+            displayResult();
         })
     }
 }
@@ -84,9 +91,12 @@ function equalsKey(){
     let equalsbutton = document.getElementsByClassName("equal");
     for(let i = 0; i < equalsbutton.length; i++){
         equalsbutton[i].addEventListener('click', () => {
+            secondOperand = parseInt(operands);
             getResult();
-            const display = document.getElementById("displayvalue")
-            display.value = result;
+            firstOperand = result;
+            operands = "";
+            equalIsPressed = true;
+            displayResult();
         })
     }
 }
@@ -100,19 +110,48 @@ function clearKey(){
             operands = "";
             displayValue = "";
             result = 0;
+            operatorIsPressed = false;
+            equalIsPressed = false;
             
             const display = document.getElementById("displayvalue")
-            display.value = 0})
+            const displayresult = document.getElementById("displayresultvalue")
+            display.value = 0
+            displayresult.value = ""})
     }
 }
 
+function getOperand(){
+    if(!equalIsPressed){
+        if(!operatorIsPressed){
+            firstOperand = parseInt(operands);
+        }
+        else if(operatorIsPressed && secondOperand == 0){
+            secondOperand = parseInt(operands);
+        }
+        else{
+            firstOperand = result;
+            secondOperand = parseInt(operands);
+        }
+    }
+    else{
+        firstOperand = result;
+        secondOperand = parseInt(operands);
+        equalIsPressed = false;
+    }
+    //operands = "";
+}
+
 function getResult(){
-    secondOperand = parseInt(operands);
-    operands = "";
-    console.log("second operands : " + secondOperand)
-    
     result = operate(firstOperand, operator, secondOperand);
     return result;
+}
+
+function displayResult(){
+    const display = document.getElementById("displayresultvalue")
+    console.log(firstOperand)
+    console.log(secondOperand)
+    console.log("result : " + result);
+    display.value = result;
 }
 
 buttonKeys();

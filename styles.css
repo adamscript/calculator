@@ -10,7 +10,7 @@ body{
     grid-template-columns: repeat(4, auto);
 }
 
-#displayvalue{
+input{
     font-size: 30px;
     text-align: right;
     width: 300px;
