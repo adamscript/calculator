@@ -66,6 +66,12 @@ function operandKeys(){
             disablePeriod();
             displayResult();
         })
+
+        document.addEventListener('keydown', () => {
+            if(event.key == operandbuttons[i].textContent){
+                operandbuttons[i].click();
+            }
+        })
     }
 }
 
@@ -80,6 +86,12 @@ function operatorKeys(){
             //getOperand();
             operator = operatorbuttons[i].textContent;
             displayResult();
+        })
+
+        document.addEventListener('keydown', () => {
+            if(event.key == operatorConverter(operatorbuttons[i].textContent)){
+                operatorbuttons[i].click();
+            }
         })
     }
 }
@@ -98,6 +110,12 @@ function equalsKey(){
             displayValue = result;
             const display = document.getElementById("displayvalue")
             display.value = displayValue
+        })
+
+        document.addEventListener('keydown', () => {
+            if(event.key == "Enter"){
+                equalsbutton[i].click();
+            }
         })
     }
 }
@@ -119,6 +137,12 @@ function clearKey(){
             const displayresult = document.getElementById("displayresultvalue")
             display.value = ""
             displayresult.value = ""})
+        
+        document.addEventListener('keydown', () => {
+            if(event.key == "Escape"){
+                clearbutton[i].click();
+            }
+        })
     }
 }
 
@@ -136,6 +160,12 @@ function backspaceKey(){
         const display = document.getElementById("displayvalue");
         display.value = displayValue;
         console.log("operands" + operands)
+    })
+
+    document.addEventListener('keydown', () => {
+        if(event.key == "Backspace"){
+            backspacebutton.click();
+        }
     })
 }
 
@@ -193,14 +223,19 @@ equalsKey();
 clearKey();
 backspaceKey();
 
-let buttons = document.querySelectorAll("button");
-for(let i = 0; i < buttons.length; i++){
-    console.log(buttons[i])
-}
-
-let keyone = document.getElementById("btn_1");
-document.addEventListener('keydown', () => {
-    if(event.key == 4){
-        keyone.click();
+function operatorConverter(operator){
+    switch(operator){
+        case "+":
+            return "+";
+            break;
+        case "-":
+            return "-";
+            break;
+        case "×":
+            return "*";
+            break;
+        case "÷":
+            return "/";
+            break;
     }
-})
+}
