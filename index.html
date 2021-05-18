@@ -2,6 +2,9 @@
     <head>
         <title>Calculator</title>
         <link rel = "stylesheet" href = "styles.css">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     </head>
 
     <body>
@@ -10,6 +13,9 @@
         <div id = "display">
             <input type = "text" value = "" disabled id = "displayvalue">
             <input type = "text" disabled id = "displayresultvalue">
+        </div>
+        <div id = "toggle">
+            <button id = "expand_button" onclick = "expandButton()"><img src = "https://fonts.gstatic.com/s/i/materialiconsoutlined/expand_more/v12/24px.svg" alt = "Show Keypads" id = "expand_icon"></button>
         </div>
         <div id = "buttons">
             <button id = "btn_7" class = "operand">7</button>

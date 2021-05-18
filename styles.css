@@ -5,24 +5,49 @@ body{
     background-color: #181818;
     width: 100%;
     height: 100%;
+    font-family: "Roboto", sans-serif;
 }
 
 #header{
     float: left;
     color: lightgrey;
-    font-family: Arial, Helvetica, sans-serif;
+    background-color: #181818;
     font-weight: bold;
+    width: 100%;
+    padding: 10px;
     
 }
 
 #header a:link{
-    color: white;
+    color: 4285F4;
     text-decoration: none;
 }
 
 #header a:visited{
-    color: white;
+    color: 4285F4;
     text-decoration: none;
+}
+
+@keyframes hideKeypad{
+    from {
+        position: relative;
+        bottom: 0%;
+    }
+    to {
+        position: relative;
+        bottom: 100%;
+    }
+}
+
+@keyframes showKeypad{
+    from {
+        position: relative;
+        bottom: 100%;
+    }
+    to {
+        position: relative;
+        bottom: 0%;
+    }
 }
 
 #buttons{
@@ -31,6 +56,9 @@ body{
     grid-template-columns: repeat(4, 1fr);
     width: 100%;
     height: 100%;
+
+    position: relative;
+    bottom: 100%;
 }
 
 input{
@@ -40,10 +68,12 @@ input{
     background-color: #181818;
     color: lightgrey;
     border: 0px;
+    font-family: "Roboto", sans-serif;
 }
 
 #displayresultvalue{
     font-size: 100px;
+    color: grey;
 }
 
 button{
@@ -51,10 +81,22 @@ button{
     background-color: #202020;
     border: 0px;
     color: lightgrey;
+    font-family: "Roboto", sans-serif;
 }
 
-#backspace_icon{
+img{
     filter: invert(100%);
+    width: 50px;
+}
+
+#toggle{
+    width: 100%;
+}
+
+#expand_button{
+    height: 50px;
+    width: 100%;
+    background-color: #181818;
 }
 
 #btn_equal{

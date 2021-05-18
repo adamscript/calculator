@@ -6,6 +6,7 @@ let secondOperand = 0;
 let result = 0;
 let operatorIsPressed = false;
 let equalIsPressed = false;
+let keypadIsHidden = true;
 
 function add(operand1, operand2){
     return operand1 + operand2;
@@ -214,6 +215,20 @@ function displayResult(){
 function hideResult(){
     const display = document.getElementById("displayresultvalue")
     display.value = "";
+}
+
+function expandButton(){
+    if(keypadIsHidden){
+        document.getElementById("buttons").style.animation = "showKeypad 1s forwards"
+        document.getElementById("expand_icon").src = "https://fonts.gstatic.com/s/i/materialiconsoutlined/expand_less/v10/24px.svg"
+        keypadIsHidden = false;
+    }
+    else{
+        document.getElementById("buttons").style.animation = "hideKeypad 1s forwards"
+        document.getElementById("expand_icon").src = "https://fonts.gstatic.com/s/i/materialiconsoutlined/expand_more/v10/24px.svg"
+        keypadIsHidden = true;
+    }
+    console.log("expandeed")
 }
 
 buttonKeys();
