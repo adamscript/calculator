@@ -158,7 +158,8 @@ function backspaceKey(){
         disablePeriod();
         displayResult();
 
-        if(operands == 0){
+        if(operands == ""){
+            console.log("naaan")
             let clearbutton = document.getElementsByClassName("clear");
             for(let i = 0; i < clearbutton.length; i++){
                 clearbutton[i].click();
