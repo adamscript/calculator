@@ -19,12 +19,12 @@ body{
 }
 
 #header a:link{
-    color: 4285F4;
+    color: #4285F4;
     text-decoration: none;
 }
 
 #header a:visited{
-    color: 4285F4;
+    color: #4285F4;
     text-decoration: none;
 }
 
@@ -32,10 +32,12 @@ body{
     from {
         position: relative;
         bottom: 0%;
+        opacity: 100%
     }
     to {
         position: relative;
         bottom: 100%;
+        opacity: -150%
     }
 }
 
@@ -43,11 +45,19 @@ body{
     from {
         position: relative;
         bottom: 100%;
+        opacity: -150%
     }
     to {
         position: relative;
         bottom: 0%;
+        opacity: 100%
     }
+}
+
+#textCursor{
+    color: #4285F4;
+    font-size: 150px;
+    order: 3;
 }
 
 #buttons{
@@ -58,7 +68,7 @@ body{
     height: 100%;
 
     position: relative;
-    bottom: 100%;
+    bottom: 150%;
 }
 
 input{
@@ -71,9 +81,27 @@ input{
     font-family: "Roboto", sans-serif;
 }
 
+#displayinput{
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+}
+
 #displayresultvalue{
     font-size: 100px;
     color: grey;
+}
+
+@keyframes blinking{
+    0%{opacity: 100%;}
+    50%{opacity: 0%;}
+}
+
+#textCursor{
+    font-family: 'Times New Roman', Times, serif;
+    animation-name: blinking;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: step-start;
 }
 
 button{

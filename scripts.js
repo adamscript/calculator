@@ -158,6 +158,13 @@ function backspaceKey(){
         disablePeriod();
         displayResult();
 
+        if(operands == 0){
+            let clearbutton = document.getElementsByClassName("clear");
+            for(let i = 0; i < clearbutton.length; i++){
+                clearbutton[i].click();
+            }
+        }
+
         const display = document.getElementById("displayvalue");
         display.value = displayValue;
         console.log("operands" + operands)
@@ -219,12 +226,19 @@ function hideResult(){
 
 function expandButton(){
     if(keypadIsHidden){
-        document.getElementById("buttons").style.animation = "showKeypad 1s forwards"
+        const buttons = document.getElementById("buttons");
+        buttons.style.animation = "showKeypad 1s forwards";
+        setTimeout(function(){buttons.style.zIndex = "0"}, 1000)
+
         document.getElementById("expand_icon").src = "https://fonts.gstatic.com/s/i/materialiconsoutlined/expand_less/v10/24px.svg"
         keypadIsHidden = false;
+
     }
     else{
-        document.getElementById("buttons").style.animation = "hideKeypad 1s forwards"
+        const buttons = document.getElementById("buttons");
+        buttons.style.animation = "hideKeypad 1s forwards"
+        buttons.style.zIndex = "-1"
+
         document.getElementById("expand_icon").src = "https://fonts.gstatic.com/s/i/materialiconsoutlined/expand_more/v10/24px.svg"
         keypadIsHidden = true;
     }
