@@ -1,6 +1,6 @@
 # Calculator
 
-In this project, I'm practising my HTML, CSS, and Javascript skills by creating a calculator. Not proud of my code readability (which I'll probably fix later), but I learned a lot from this project and very proud of the result. 
+In this project, I'm practising my HTML, CSS, and Javascript skills by creating a calculator. Not proud of my code organization (which I'll probably fix later), but I learned a lot from this project and very proud of the result. 
 
 live preview : https://awwwan.github.io/calculator
 
